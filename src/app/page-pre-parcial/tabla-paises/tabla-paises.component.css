@@ -1,0 +1,9 @@
+.imagen-bandera {
+    width: 30px;
+    height: 20px;
+}
+
+.box-lista-paises {
+    height: 500px;
+    overflow-y: scroll;
+}

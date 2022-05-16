@@ -12,6 +12,7 @@ import { FootComponent } from './common/foot/foot.component';
 import { AltaActorComponent } from './page-pre-parcial/alta-actor/alta-actor.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TablaPaisesComponent } from './page-pre-parcial/tabla-paises/tabla-paises.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TablaPaisesComponent } from './page-pre-parcial/tabla-paises/tabla-pais
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
