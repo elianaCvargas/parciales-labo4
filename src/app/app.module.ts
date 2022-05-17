@@ -10,9 +10,13 @@ import { DetallePeliculaComponent } from './page-pre-parcial/busqueda/detalle-pe
 import { MenuComponent } from './common/menu/menu.component';
 import { FootComponent } from './common/foot/foot.component';
 import { AltaActorComponent } from './page-pre-parcial/alta-actor/alta-actor.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TablaPaisesComponent } from './page-pre-parcial/tabla-paises/tabla-paises.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment';
+import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,12 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule,
+    // AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

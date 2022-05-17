@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Actor } from 'src/app/clases/actor';
 import { Pais } from 'src/app/clases/paises';
 import { PaisService } from 'src/app/servicios/pais.service';
+import { ActorService } from 'src/app/servicios/pre-parcial/actor.service';
 
 @Component({
   selector: 'app-alta-actor',
@@ -10,20 +12,20 @@ import { PaisService } from 'src/app/servicios/pais.service';
 })
 export class AltaActorComponent implements OnInit {
   public registroFormulario: FormGroup;
+  paisIsSelected: boolean = false;
   paises: Pais[] = [];
   pais: Pais;
 
-  constructor(private fb: FormBuilder, private paisesService: PaisService) { }
+  constructor(private fb: FormBuilder, private paisesService: PaisService, private actorService: ActorService) { }
 
   ngOnInit(): void {
     this.registroFormulario = this.fb.group({
       nombre: ['', { validators: [Validators.required] }],
       apellido: ['', { validators: [Validators.required] }],
-      pais: ['', { validators: [Validators.required] }],
       email: ['', { validators: [Validators.required, Validators.email] }],
-      paisControl: ['', { validators: [Validators.required] }],
-      descripcion: ['', { validators: [Validators.required] }],
-      bandera: ['', { validators: [Validators.required] }],
+      // descripcion: ['', { validators: [Validators.required] }],
+      // paisControl: ['', { validators: [Validators.required] }],
+
 
       // password1: ['', [Validators.required, Validators.minLength(6)]],
       // password2: ['', [Validators.required]]
@@ -43,12 +45,28 @@ export class AltaActorComponent implements OnInit {
   }
 
   registrar() {
-    var name = this.nombre();
-    var apellido = this.apellido();
-    var email = this.email();
-    var paisControl = this.paisControl();
-    var descripcion = this.descripcion();
-    var bandera = this.bandera();
+    var actor = new Actor();
+    actor.nombre = this.nombre();
+    actor.apellido = this.apellido();
+    actor.email = this.email();
+    actor.nacionalidad = this.pais.nombre;
+    // var pais = new Pais();
+    // pais.descripcion = this.pais.descripcion;
+    // pais.nombre = this.pais.nombre;
+    // pais.foto = this.pais.foto;
+    // actor.pais = pais;
+
+    // this.actorService.guardarPais(this.pais)
+    //   .then(response => {
+    //     console.log({ success: response })
+    //   })
+    //   .catch(error => console.log(error));
+
+    this.actorService.guardarUsuario(actor)
+      .then(response => { console.log({ success: response }) })
+      .catch(error => console.log(error));
+
+
   }
 
   nombre() {
@@ -63,20 +81,21 @@ export class AltaActorComponent implements OnInit {
     return this.registroFormulario.controls['email'].value;
   }
 
-  paisControl() {
-    return this.registroFormulario.controls['paisControl'].value;
-  }
+  // paisControl() {
+  //   return this.registroFormulario.controls['paisControl'].value;
+  // }
 
-  descripcion() {
-    return this.registroFormulario.controls['descripcion'].value;
-  }
+  // descripcion() {
+  //   return this.registroFormulario.controls['descripcion'].value;
+  // }
 
-  bandera() {
-    return this.registroFormulario.controls['bandera'].value;
-  }
+  // bandera() {
+  //   return this.registroFormulario.controls['bandera'].value;
+  // }
 
 
   mostrarPais(pais: Pais) {
+    this.paisIsSelected = true;
     console.log(pais);
     this.pais = pais;
   }
