@@ -15,7 +15,7 @@ export class AltaActorComponent implements OnInit {
   paisIsSelected: boolean = false;
   paises: Pais[] = [];
   pais: Pais;
-
+  registroOK: boolean = false;
   constructor(private fb: FormBuilder, private paisesService: PaisService, private actorService: ActorService) { }
 
   ngOnInit(): void {
@@ -63,7 +63,15 @@ export class AltaActorComponent implements OnInit {
     //   .catch(error => console.log(error));
 
     this.actorService.guardarUsuario(actor)
-      .then(response => { console.log({ success: response }) })
+      .then(response => {
+        console.log({ success: response });
+        setTimeout(() => {
+          this.registroOK = true;
+          // this.route.navigate(['juego']).then(() => {
+          //   location.reload()
+          // });
+        }, 3000);
+      })
       .catch(error => console.log(error));
 
 

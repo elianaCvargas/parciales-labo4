@@ -60,6 +60,9 @@
                 <button [disabled]="registroFormulario.invalid || !paisIsSelected"
                     (click)="registrar()">registrar</button>
 
+                <div class="d-flex justify-content-center" *ngIf="registroOK">
+                    Guardado con exito
+                </div>
                 <hr class="my-4">
                 <hr class="my-4">
                 <hr class="my-4">

@@ -1,0 +1,63 @@
+<div class="container box-actor">
+    <div class="row g-5">
+        <div class="col-md-5 col-lg-4 order-md-last">
+
+        </div>
+
+
+        <div class="col-md-7 col-lg-8">
+            <h4 class="mb-3">Alta Actor</h4>
+            <form [formGroup]="registroFormulario" class="needs-validation" novalidate="">
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="form-label">Título</label>
+                        <input type="text" class="form-control" placeholder="Ingrese el título" formControlName="nombre"
+                            required>
+                        <div class="d-flex justify-content-center error" *ngIf="registroFormulario.controls['nombre'].errors?.['required'] 
+                            && registroFormulario.controls['nombre'].touched">
+                            Por favor ingresar un título
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="lastName" class="form-label">Tipo</label>
+                        <input type="text" class="form-control" placeholder="Ingrese el  tipo" formControlName="tipo"
+                            required>
+                        <div class="d-flex justify-content-center error" *ngIf="registroFormulario.controls['tipo'].errors?.['required'] 
+                            && registroFormulario.controls['tipo'].touched">
+                            Por favor ingresar un tipo
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="country" class="form-label">Fecha</label>
+                        <input type="datetime-local" class="form-control" formControlName="fecha">
+                    </div>
+
+                    <div class="col-md-5">
+                        <label for="state" class="form-label">Cantidad</label>
+                        <input type="number" class="form-control" formControlName="cantidad"
+                            placeholder="Ingrese cantidad">
+                        <div class="d-flex justify-content-center error" *ngIf="registroFormulario.controls['cantidad'].errors?.['required'] 
+                            && registroFormulario.controls['cantidad'].touched">
+                            Ingrese una cantidad
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <label for="state" class="form-label">Imagen</label>
+                        <input type="file" class="form-control" formControlName="foto" placeholder="Ingrese una imagen">
+                    </div>
+
+
+                </div>
+
+                <button [disabled]="registroFormulario.invalid" (click)="registrar() "
+                    (change)="onChange($event)">registrar</button>
+
+                <hr class="my-4">
+                <hr class="my-4">
+                <hr class="my-4">
+            </form>
+        </div>
+    </div>
+</div>

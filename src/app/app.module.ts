@@ -16,7 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFirestoreModule, } from '@angular/fire/compat/firestore';
+import { AltaPeliculaComponent } from './page-pre-parcial/alta-pelicula/alta-pelicula.component';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     MenuComponent,
     FootComponent,
     AltaActorComponent,
-    TablaPaisesComponent
+    TablaPaisesComponent,
+    AltaPeliculaComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
-    // AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
