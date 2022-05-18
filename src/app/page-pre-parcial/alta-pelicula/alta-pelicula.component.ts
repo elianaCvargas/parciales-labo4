@@ -20,6 +20,9 @@ export class AltaPeliculaComponent implements OnInit {
   actores: Actor[] = [];
   pais: Pais;
   registroOk: boolean = false;
+  archivo: File;
+  tipoSeleccionado: string;
+  actor: Actor;
   constructor(private fb: FormBuilder, private peliculaService: PeliculaService, private actorService: ActorService
     , private archivoService: ArchivoService) { }
 
@@ -42,32 +45,34 @@ export class AltaPeliculaComponent implements OnInit {
 
   }
 
-  registrar() {
+  registrar(event: any) {
     var pelicula = new Pelicula();
     pelicula.cantidadPublico = this.cantidad();
     pelicula.fechaEstreno = this.fecha().toLocaleString();
     pelicula.nombre = this.nombre();
     pelicula.foto = this.foto();
     pelicula.tipo = this.tipo();
-    // var archi = new File([this.foto()], "fileExample");
+    pelicula.actor = this.actor;
 
+    this.peliculaService.guardarPelicula(pelicula)
+      .then(response => {
+        console.log({ success: response });
+        setTimeout(() => {
+          this.registroOk = true;
 
-    // this.peliculaService.guardarPelicula(pelicula)
-    //   .then(response => {
-    //     console.log({ success: response });
-    //     setTimeout(() => {
-    //       this.registroOk = true;
+        }, 3000);
+      })
+      .catch(error => console.log(error));
 
-    //     }, 3000);
-    //   })
-    //   .catch(error => console.log(error));
-    // this.archivoService.subirArchivo(archi);
-
-
+    this.archivoService.subirArchivo(this.archivo);
   }
 
-  onChange($event: any) {
 
+
+  onChange(event: any) {
+
+    const file: File = event.target.files[0];
+    this.archivo = file;
   }
 
   nombre() {
@@ -95,6 +100,10 @@ export class AltaPeliculaComponent implements OnInit {
     this.paisIsSelected = true;
     console.log(pais);
     this.pais = pais;
+  }
+
+  mostrarActorSeleccionado(actor: Actor) {
+    this.actor = actor;
   }
 
 }

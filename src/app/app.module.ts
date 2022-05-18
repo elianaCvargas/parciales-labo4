@@ -19,6 +19,7 @@ import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule, } from '@angular/fire/compat/firestore';
 import { AltaPeliculaComponent } from './page-pre-parcial/alta-pelicula/alta-pelicula.component';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { TablaActoresComponent } from './page-pre-parcial/tabla-actores/tabla-actores.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
     FootComponent,
     AltaActorComponent,
     TablaPaisesComponent,
-    AltaPeliculaComponent
+    AltaPeliculaComponent,
+    TablaActoresComponent
   ],
   imports: [
     BrowserModule,

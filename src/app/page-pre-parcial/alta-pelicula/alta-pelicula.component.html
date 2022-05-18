@@ -1,12 +1,12 @@
 <div class="container box-actor">
     <div class="row g-5">
         <div class="col-md-5 col-lg-4 order-md-last">
-
+            <app-tabla-actores (onSelectedActor)="mostrarActorSeleccionado($event)"></app-tabla-actores>
         </div>
 
 
         <div class="col-md-7 col-lg-8">
-            <h4 class="mb-3">Alta Actor</h4>
+            <h4 class="mb-3">Alta Película</h4>
             <form [formGroup]="registroFormulario" class="needs-validation" novalidate="">
                 <div class="row g-3">
                     <div class="col-sm-6">
@@ -18,15 +18,31 @@
                             Por favor ingresar un título
                         </div>
                     </div>
+
+
                     <div class="col-sm-6">
                         <label for="lastName" class="form-label">Tipo</label>
-                        <input type="text" class="form-control" placeholder="Ingrese el  tipo" formControlName="tipo"
+                        <!-- <input type="text" class="form-control" placeholder="Ingrese el  tipo" formControlName="tipo"
                             required>
                         <div class="d-flex justify-content-center error" *ngIf="registroFormulario.controls['tipo'].errors?.['required'] 
                             && registroFormulario.controls['tipo'].touched">
                             Por favor ingresar un tipo
-                        </div>
+                        </div> -->
+
+                        <input class="form-control" list="datalistOptions" id="exampleDataList" formControlName="tipo"
+                            [(ngModel)]="tipoSeleccionado" placeholder="Buscar Tipo de película">
+                        <datalist id="datalistOptions">
+                            <option value="Ficción">
+                            <option value="Comedia">
+                            <option value="Terror">
+                            <option value="Romance">
+                            <option value="Drama">
+                        </datalist>
                     </div>
+
+
+
+
 
                     <div class="col-md-3">
                         <label for="country" class="form-label">Fecha</label>
@@ -43,17 +59,30 @@
                         </div>
                     </div>
 
+                    <div class="col-sm-6">
+                        <label class="form-label">Actor</label>
+
+                        <input *ngIf="actor" type="text" class="form-control" required
+                            value="{{actor.nombre}}, {{actor.apellido}}">
+                        <div class="d-flex justify-content-center bg-info">
+                            Por favor seleccione un Actor
+                        </div>
+                    </div>
+
                     <div class="col-md-5">
                         <label for="state" class="form-label">Imagen</label>
-                        <input type="file" class="form-control" formControlName="foto" placeholder="Ingrese una imagen">
+                        <!-- <input type="file" class="form-control" formControlName="foto" placeholder="Ingrese una imagen"> -->
+                        <input type="file" (change)="onChange($event)" class="form-control" formControlName="foto"
+                            placeholder="Ingrese una imagen">
                     </div>
 
 
                 </div>
 
-                <button [disabled]="registroFormulario.invalid" (click)="registrar() "
-                    (change)="onChange($event)">registrar</button>
-
+                <button [disabled]="registroFormulario.invalid" (click)="registrar($event) ">registrar</button>
+                <div class="d-flex justify-content-center ok" *ngIf="registroOk">
+                    Guardado con exito
+                </div>
                 <hr class="my-4">
                 <hr class="my-4">
                 <hr class="my-4">
