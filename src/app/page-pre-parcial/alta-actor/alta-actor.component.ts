@@ -50,6 +50,8 @@ export class AltaActorComponent implements OnInit {
     actor.apellido = this.apellido();
     actor.email = this.email();
     actor.nacionalidad = this.pais.nombre;
+    // actor.pais = this.pais;
+    // actor.pais.foto = "foto";
     // var pais = new Pais();
     // pais.descripcion = this.pais.descripcion;
     // pais.nombre = this.pais.nombre;

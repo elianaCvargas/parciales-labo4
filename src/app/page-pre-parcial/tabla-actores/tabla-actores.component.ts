@@ -21,13 +21,6 @@ export class TablaActoresComponent implements OnInit {
     this.actorService.getAllActor().subscribe(response => {
       console.log(response)
       this.actoresDoc = response;
-      // response.forEach(a => {
-      //   actor.apellido = a.data.apellido;
-      //   actor.nombre = a.data.nombre;
-      //   actor.email = a.data.email;
-      //   actor.nacionalidad = a.data.nacionalidad;
-      //   this.actores.push(actor);
-      // });
 
       for (var i = 0; i < response.length; i++) {
         this.actores.push(response[i].data);

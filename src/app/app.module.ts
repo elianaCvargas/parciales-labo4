@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BusquedaComponent } from './page-pre-parcial/busqueda/busqueda.component';
 import { TablaPeliculaComponent } from './page-pre-parcial/busqueda/tabla-pelicula/tabla-pelicula.component';
-import { ListaPeliculaComponent } from './page-pre-parcial/busqueda/lista-pelicula/lista-pelicula.component';
 import { DetallePeliculaComponent } from './page-pre-parcial/busqueda/detalle-pelicula/detalle-pelicula.component';
 import { MenuComponent } from './common/menu/menu.component';
 import { FootComponent } from './common/foot/foot.component';
@@ -20,20 +19,23 @@ import { AngularFirestoreModule, } from '@angular/fire/compat/firestore';
 import { AltaPeliculaComponent } from './page-pre-parcial/alta-pelicula/alta-pelicula.component';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { TablaActoresComponent } from './page-pre-parcial/tabla-actores/tabla-actores.component';
+import { ActorPeliculaComponent } from './page-pre-parcial/actor-pelicula/actor-pelicula.component';
+import { ListaPeliculaComponent } from './page-pre-parcial/lista-pelicula/lista-pelicula.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BusquedaComponent,
     TablaPeliculaComponent,
-    ListaPeliculaComponent,
     DetallePeliculaComponent,
     MenuComponent,
     FootComponent,
     AltaActorComponent,
     TablaPaisesComponent,
     AltaPeliculaComponent,
-    TablaActoresComponent
+    TablaActoresComponent,
+    ActorPeliculaComponent,
+    ListaPeliculaComponent
   ],
   imports: [
     BrowserModule,

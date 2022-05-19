@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, DocumentChangeAction } from '@angular/fire/compat/firestore';
+import { map, Observable } from 'rxjs';
+import { Documento } from 'src/app/clases/documento';
 import { Pelicula } from 'src/app/clases/pelicula';
 
 @Injectable({
@@ -14,28 +16,13 @@ export class PeliculaService {
     return this.firestore.collection('pelicula').add({ ...pelicula });
   }
 
-  // getAllActor(): Observable<Documento<Actor>[]> {
-  //   return this.firestore
-  //     .collection<Actor>('actor', (ref) =>
-  //       ref)
-  //     .snapshotChanges()
-  //     .pipe(
-  //       map((results: DocumentChangeAction<Actor>[]) => {
-  //         return results.map((result) => {
-  //           var data = result.payload.doc.data();
+  peliculasGetByActor(email: string): Observable<Pelicula[]> {
+    var peliculas = this.firestore.collection<Pelicula>('pelicula', (ref) =>
+      ref
+        .where('actor.email', '==', email)
 
-  //           return {
-  //             id: result.payload.doc.id,
-  //             data: {
-  //               nombre: data.nombre,
-  //               apellido: data.apellido,
-  //               email: data.email,
-  //               nacionalidad: data.nacionalidad
-  //             } as Actor,
-  //           };
-  //         })
+    );
 
-  //       })
-  //     );
-  // }
+    return peliculas.valueChanges();
+  }
 }
