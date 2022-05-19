@@ -21,6 +21,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { TablaActoresComponent } from './page-pre-parcial/tabla-actores/tabla-actores.component';
 import { ActorPeliculaComponent } from './page-pre-parcial/actor-pelicula/actor-pelicula.component';
 import { ListaPeliculaComponent } from './page-pre-parcial/lista-pelicula/lista-pelicula.component';
+import { DetallePaisComponent } from './page-pre-parcial/detalle-pais/detalle-pais.component';
+import { DetalleActorComponent } from './page-pre-parcial/detalle-actor/detalle-actor.component';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +38,9 @@ import { ListaPeliculaComponent } from './page-pre-parcial/lista-pelicula/lista-
     AltaPeliculaComponent,
     TablaActoresComponent,
     ActorPeliculaComponent,
-    ListaPeliculaComponent
+    ListaPeliculaComponent,
+    DetallePaisComponent,
+    DetalleActorComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +49,7 @@ import { ListaPeliculaComponent } from './page-pre-parcial/lista-pelicula/lista-
     HttpClientModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule

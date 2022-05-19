@@ -3,3 +3,8 @@ export class Pais {
     descripcion: string;
     foto: string;
 }
+
+export class PaisDb {
+    nombre: string;
+    descripcion: string;
+}

@@ -8,6 +8,7 @@ export const environment = {
     storageBucket: "laboratorio-1d6f1.appspot.com",
     messagingSenderId: "551715701399",
     appId: "1:551715701399:web:5c8439b8b01f2a4db09fd2",
-    measurementId: "G-H3RY56ESRN"
+    measurementId: "G-H3RY56ESRN",
+    ignoreUndefinedProperties: true
   }
 };

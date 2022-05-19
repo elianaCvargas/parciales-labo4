@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { stringify } from 'querystring';
 import { Actor } from 'src/app/clases/actor';
-import { Pais } from 'src/app/clases/paises';
+import { Pais, PaisDb } from 'src/app/clases/paises';
 import { PaisService } from 'src/app/servicios/pais.service';
 import { ActorService } from 'src/app/servicios/pre-parcial/actor.service';
 
@@ -50,8 +51,8 @@ export class AltaActorComponent implements OnInit {
     actor.apellido = this.apellido();
     actor.email = this.email();
     actor.nacionalidad = this.pais.nombre;
-    // actor.pais = this.pais;
-    // actor.pais.foto = "foto";
+    actor.nombrePais = this.pais.descripcion;
+
     // var pais = new Pais();
     // pais.descripcion = this.pais.descripcion;
     // pais.nombre = this.pais.nombre;

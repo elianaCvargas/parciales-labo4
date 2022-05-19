@@ -12,11 +12,13 @@ export class PeliculaService {
   constructor(private firestore: AngularFirestore) { }
 
 
+
   guardarPelicula(pelicula: Pelicula) {
     return this.firestore.collection('pelicula').add({ ...pelicula });
   }
 
   peliculasGetByActor(email: string): Observable<Pelicula[]> {
+
     var peliculas = this.firestore.collection<Pelicula>('pelicula', (ref) =>
       ref
         .where('actor.email', '==', email)

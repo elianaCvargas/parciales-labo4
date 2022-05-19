@@ -43,4 +43,17 @@ export class ActorService {
         })
       );
   }
+
+
+  actorGet(email: string): Observable<Actor[]> {
+
+    var actor = this.firestore.collection<Actor>('actor', (ref) =>
+      ref
+        .where('email', '==', email)
+
+    );
+
+    return actor.valueChanges();
+  }
+
 }

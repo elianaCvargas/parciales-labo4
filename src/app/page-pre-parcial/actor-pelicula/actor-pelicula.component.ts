@@ -3,6 +3,7 @@ import { Actor } from 'src/app/clases/actor';
 import { Pais } from 'src/app/clases/paises';
 import { Pelicula } from 'src/app/clases/pelicula';
 import { PaisService } from 'src/app/servicios/pais.service';
+import { ActorService } from 'src/app/servicios/pre-parcial/actor.service';
 import { PeliculaService } from 'src/app/servicios/pre-parcial/pelicula.service';
 
 @Component({
@@ -13,9 +14,10 @@ import { PeliculaService } from 'src/app/servicios/pre-parcial/pelicula.service'
 export class ActorPeliculaComponent implements OnInit {
 
   peliculas: Pelicula[] = [];
-  paises: Pais[] = [];
+  pais: Pais = new Pais();
+  actor: Actor;
   actorSeleccionado: Actor;
-  constructor(private peliculaService: PeliculaService, private paisService: PaisService) { }
+  constructor(private peliculaService: PeliculaService, private paisService: PaisService, private actorService: ActorService) { }
 
   ngOnInit(): void {
 
@@ -29,17 +31,14 @@ export class ActorPeliculaComponent implements OnInit {
         this.peliculas = res;
       });
 
-    // this.paisService.listarPaises().subscribe(data => {
-    //   console.log(data);
-    //   for (var i = 0; i < 11; i++) {
-    //     var pais = new Pais();
-    //     pais.nombre = data[i].name.common;
-    //     pais.descripcion = data[i].name.official;
-    //     pais.foto = data[i].flags.png
-    //     this.paises.push(pais);
-    //   }
+    this.actorService.actorGet(event.email)
+      .subscribe(res => {
+        this.actor = res[0];
 
-    // });
+        this.pais.descripcion = this.actor.nacionalidad;
+        this.pais.nombre = this.actor.nombrePais;
+      })
+
   }
 
 }
