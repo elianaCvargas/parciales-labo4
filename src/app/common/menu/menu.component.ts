@@ -8,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class MenuComponent implements OnInit {
 
   constructor() { }
-
+  userIsLogged: boolean = false;
+  usuarioLogged: any = false;
   ngOnInit(): void {
+    this.usuarioLogged = JSON.parse(localStorage.getItem('usuario') || '{}');
+    this.userIsLogged = localStorage.getItem("usuario") != undefined ? true : false;
+
   }
 
 }

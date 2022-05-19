@@ -1,0 +1,48 @@
+<div class="container box-actor">
+    <div class="row g-5">
+
+
+
+        <div class="col-md-7 col-lg-8">
+            <h4 class="mb-3">Login Usuario</h4>
+            <form [formGroup]="registroFormulario" class="needs-validation" novalidate="">
+                <div class="row g-3">
+
+
+                    <div class="col-12">
+                        <label for="email" class="form-label">Email </label>
+                        <!-- <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label> -->
+                        <input type="email" class="form-control" formControlName="email" placeholder="you@example.com">
+                        <div class="d-flex justify-content-center error" *ngIf="registroFormulario.controls['email'].errors?.['required'] 
+                        && registroFormulario.controls['email'].touched">
+                            Por favor ingresar un email
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <label for="lastName" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" placeholder="Ingrese el  password"
+                            formControlName="password" required>
+                        <div class="d-flex justify-content-center error" *ngIf="registroFormulario.controls['password'].errors?.['required'] 
+                            && registroFormulario.controls['password'].touched">
+                            Por favor ingresar un password
+                        </div>
+                    </div>
+
+                </div>
+
+                <button [disabled]="registroFormulario.invalid" (click)="ingresar()">Ingresar</button>
+
+                <div class="d-flex justify-content-center" *ngIf="registroOK">
+                    ingreso exitoso
+                </div>
+                <div class="d-flex justify-content-center" *ngIf="!registroOK">
+                    {{mensaje}}
+                </div>
+                <hr class="my-4">
+                <hr class="my-4">
+                <hr class="my-4">
+            </form>
+        </div>
+    </div>
+</div>

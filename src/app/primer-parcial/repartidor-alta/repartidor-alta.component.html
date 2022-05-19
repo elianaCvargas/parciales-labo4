@@ -1,0 +1,98 @@
+<div class="container box-actor">
+    <div class="row g-5">
+        <div class="col-md-5 col-lg-4 order-md-last">
+            <app-tabla-paises [paises]="paises" (onSelectedPais)="mostrarPais($event)"></app-tabla-paises>
+        </div>
+
+
+        <div class="col-md-7 col-lg-8">
+            <h4 class="mb-3">Alta Actor</h4>
+            <form [formGroup]="registroFormulario" class="needs-validation" novalidate="">
+                <div class="row g-3">
+                    <div class="col-sm-12">
+                        <label for="firstName" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" placeholder="Ingrese el  nombre"
+                            formControlName="nombre" required>
+                        <div class="d-flex justify-content-center error" *ngIf="registroFormulario.controls['nombre'].errors?.['required'] 
+                            && registroFormulario.controls['nombre'].touched">
+                            Por favor ingresar un nombre
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="lastName" class="form-label">DNI</label>
+                        <input type="number" class="form-control" placeholder="Ingrese el  dni" formControlName="dni"
+                            required>
+                        <div class="d-flex justify-content-center error" *ngIf="registroFormulario.controls['dni'].errors?.['required'] 
+                            && registroFormulario.controls['dni'].touched">
+                            Por favor ingresar un dni
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <label for="lastName" class="form-label">Edad</label>
+                        <input type="number" class="form-control" placeholder="Ingrese la edad" formControlName="edad"
+                            required>
+                        <div class="d-flex justify-content-center error" *ngIf="registroFormulario.controls['edad'].errors?.['required'] 
+                            && registroFormulario.controls['edad'].touched">
+                            Por favor ingresar una edad
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <label for="lastName" class="form-label">Capacidad</label>
+                        <input type="number" class="form-control" placeholder="Ingrese la capacidad"
+                            formControlName="capacidad" required>
+                        <div class="d-flex justify-content-center error" *ngIf="registroFormulario.controls['capacidad'].errors?.['required'] 
+                            && registroFormulario.controls['capacidad'].touched">
+                            Por favor ingresar una capacidad
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <label for="lastName" class="form-label">Unidad propia</label>
+
+
+                        <input class="form-control" list="datalistOptions" id="exampleDataList"
+                            formControlName="unidadPropia" [(ngModel)]="unidadPropiaSeleccionada">
+                        <datalist id="datalistOptions">
+                            <option value="Si">
+                            <option value="No">
+                        </datalist>
+                    </div>
+
+
+                    <div class="col-md-3">
+                        <label for="country" class="form-label">Pais</label>
+                        <div *ngIf="pais">
+                            <input type="text" class="form-control" value={{pais.nombre}}>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <label for="state" class="form-label">Descripción</label>
+                        <div *ngIf="pais">
+                            <input type="text" class="form-control" value={{pais.descripcion}}>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="zip" class="form-label">Bandera</label>
+                        <div *ngIf="pais">
+                            <img class="imagen" src={{pais.foto}}>
+                        </div>
+                    </div>
+                </div>
+
+                <button [disabled]="registroFormulario.invalid || !paisIsSelected"
+                    (click)="registrar()">registrar</button>
+
+                <div class="d-flex justify-content-center" *ngIf="registroOK">
+                    Guardado con exito
+                </div>
+                <hr class="my-4">
+                <hr class="my-4">
+                <hr class="my-4">
+            </form>
+        </div>
+    </div>
+</div>

@@ -5,15 +5,11 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class PaisService {
-  apiPaises: string = 'https://restcountries.com/v3.1/';
+export class GihubService {
+
   apiGithub: string = 'https://api.github.com/users/elianaCvargas';
   constructor(public http: HttpClient) { }
 
-
-  public listarPaises(): Observable<any> {
-    return this.http.get(this.apiPaises + 'all');
-  }
 
   public githubGet(): Observable<any> {
     return this.http.get(this.apiGithub);

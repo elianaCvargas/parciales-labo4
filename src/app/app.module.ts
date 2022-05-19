@@ -23,6 +23,9 @@ import { ActorPeliculaComponent } from './page-pre-parcial/actor-pelicula/actor-
 import { ListaPeliculaComponent } from './page-pre-parcial/lista-pelicula/lista-pelicula.component';
 import { DetallePaisComponent } from './page-pre-parcial/detalle-pais/detalle-pais.component';
 import { DetalleActorComponent } from './page-pre-parcial/detalle-actor/detalle-actor.component';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { LoginComponent } from './primer-parcial/login/login.component';
+import { RepartidorAltaComponent } from './primer-parcial/repartidor-alta/repartidor-alta.component';
 
 
 @NgModule({
@@ -40,7 +43,9 @@ import { DetalleActorComponent } from './page-pre-parcial/detalle-actor/detalle-
     ActorPeliculaComponent,
     ListaPeliculaComponent,
     DetallePaisComponent,
-    DetalleActorComponent
+    DetalleActorComponent,
+    LoginComponent,
+    RepartidorAltaComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,7 @@ import { DetalleActorComponent } from './page-pre-parcial/detalle-actor/detalle-
     HttpClientModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-
+    AngularFireAuthModule,
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule
